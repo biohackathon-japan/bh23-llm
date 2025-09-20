@@ -232,7 +232,7 @@ In our investigation, we explored the feasibility of using open-source language 
 Consequently, our task of obtaining standardized and structured data from naturally written sample information necessitates dividing the challenge into distinct natural language processing tasks. This entails simplifying the descriptions through summarization, extracting words via token classification, and ultimately mapping them to a standardized vocabulary. As there are multiple models available in the published language models, such as stanford-crfm/BioMedLM and microsoft/biogpt, selecting the appropriate model for each specific task becomes imperative.
 
 ### Timecourse <!-- (Eisuke) -->
-One clinical information that clinicians value but that is not yet fully addressable by machines is the time course. In particular, the time course of clinical symptoms directly related to the patient is one of the easiest to understand not only for the clinician but also for the patient, and it is an important issue to be able to handle this by machine.　Thus, we attempted to extract patients symptoms with ChatGPT4 and found that when we extract symptoms and clinical findings without tagging with HPO, we successfully extracted these data based on time course. We also asked ChatGPT4 for a python code that would visualize the time-course of multiple symptoms in the three dimentions, and were able to produce a graph in less than three minutes.
+One clinical information that clinicians value but that is not yet fully addressable by machines is the time course. In particular, the time course of clinical symptoms directly related to the patient is one of the easiest to understand not only for the clinician but also for the patient, and it is an important issue to be able to handle this by machine. Thus, we attempted to extract patients symptoms with ChatGPT4 and found that when we extract symptoms and clinical findings without tagging with HPO, we successfully extracted these data based on time course. We also asked ChatGPT4 for a python code that would visualize the time-course of multiple symptoms in the three dimentions, and were able to produce a graph in less than three minutes.
 Very interestingly, the ChatGPT was able to determine these symptoms and clinical findings as positive or negative, but not as normal or abnormal. For example, head circumference is one of the most important features in pediatrics, but its normal range varies by month and age. Even when such clinical findings were extracted along with the time series, ChatGPT4 could not be determined as normal or abnormal at this time. This is indeed an interesting and worthwhile finding to know when applying LLM to clinical practice.
 
 
@@ -350,7 +350,7 @@ https://github.com/biohackathon-japan/bh23-llm/tree/main/scripts/transcription
 >
 > Provide your output in the form of a table. The table should have four columns. The first column should be the exact word or words from the original text that reference an abnormal phenotypic feature. The second column should be the identifier of the referenced HPO term, and the third column should be the canonical label or name of this term. The fourth column should specify whether the referenced HPO term is present or absent in the context of the text.
 >
-> Here is the clinical text: <CLINICAL_TEXT>
+> Here is the clinical text: &lt;CLINICAL_SUMMARY&gt;
 
 #### Output from GPT 4 (version: May 24 2023)
 
@@ -435,7 +435,7 @@ Note: The output from BioOntology Recommender was filtered to only terms from th
 > - Observed: gait abnormalities, toe walking, frequent falling, shortness of breath
 > - Absent: dysmorphic features.
 >
-> Input: <CLINICAL_SUMMARY>
+> Input: &lt;CLINICAL_SUMMARY&gt;
 >
 > Output:
 
